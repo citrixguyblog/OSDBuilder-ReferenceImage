@@ -173,13 +173,30 @@ DS_WriteLog "-" "" $LogFile
 # Update  of the OS-Media                       #
 #################################################
 
-
-DS_WriteLog "I" "Starting Update of OS-Media - Task $TaskName" $LogFile
-
+DS_WriteLog "I" "Starting Update of OS-Media" $LogFile
 
 try {
         $StartDTM = (Get-Date)
-        New-OSBuild -ByTaskName $TaskName -Download -Execute -SkipComponentCleanup  
+        $OSMediaSource = Get-ChildItem -Path "$OSDBuilderDir\OSMedia" | Sort-Object LastAccessTime -Descending | Select-Object -First 1
+        Update-OSMedia -Name $OSMediaSource.FullName -Download -Execute -SkipComponentCleanup
+	    $EndDTM = (Get-Date) 
+        DS_WriteLog "S" "Update-OSMedia completed succesfully" $LogFile
+		DS_WriteLog "I" "Elapsed Time: $(($EndDTM-$StartDTM).TotalMinutes) Minutes" $LogFile
+     }  catch {
+              DS_WriteLog "E" "An error occurred while updating the OS-Media (error: $($error[0]))" $LogFile
+              Exit 1
+             }
+
+
+#################################################
+# Creation of the  New-OSBuild                  #
+#################################################
+
+DS_WriteLog "I" "Creating New-OSBuild" $LogFile
+
+try {
+        $StartDTM = (Get-Date)
+        New-OSBuild -ByTaskName $TaskName  -Execute -SkipComponentCleanup  #-Download
         $EndDTM = (Get-Date)  
         DS_WriteLog "S" "OS-Media Creation for Task $TaskName completed succesfully" $LogFile
         DS_WriteLog "I" "Elapsed Time: $(($EndDTM-$StartDTM).TotalMinutes) Minutes" $LogFile
