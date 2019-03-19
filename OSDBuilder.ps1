@@ -178,7 +178,7 @@ DS_WriteLog "I" "Starting Update of OS-Media" $LogFile
 try {
         $StartDTM = (Get-Date)
         $OSMediaSource = Get-ChildItem -Path "$OSDBuilderDir\OSMedia" | Sort-Object LastAccessTime -Descending | Select-Object -First 1
-        Update-OSMedia -Name $OSMediaSource.FullName -Download -Execute -SkipComponentCleanup
+        Update-OSMedia -Name $($OSMediaSource.Name) -Download -Execute -SkipComponentCleanup
 	    $EndDTM = (Get-Date) 
         DS_WriteLog "S" "Update-OSMedia completed succesfully" $LogFile
 		DS_WriteLog "I" "Elapsed Time: $(($EndDTM-$StartDTM).TotalMinutes) Minutes" $LogFile
