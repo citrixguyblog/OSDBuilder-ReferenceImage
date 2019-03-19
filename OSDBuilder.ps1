@@ -196,7 +196,7 @@ DS_WriteLog "I" "Creating New-OSBuild" $LogFile
 
 try {
         $StartDTM = (Get-Date)
-        New-OSBuild -ByTaskName $TaskName  -Execute -SkipComponentCleanup  #-Download
+        New-OSBuild -ByTaskName $TaskName  -Execute -SkipComponentCleanup  
         $EndDTM = (Get-Date)  
         DS_WriteLog "S" "OS-Media Creation for Task $TaskName completed succesfully" $LogFile
         DS_WriteLog "I" "Elapsed Time: $(($EndDTM-$StartDTM).TotalMinutes) Minutes" $LogFile
