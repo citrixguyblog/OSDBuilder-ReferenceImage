@@ -80,7 +80,7 @@ $PackageName = "OSDBuilder"
 
 # OSDBuilder variables 
 $OSDBuilderDir = "C:\OSDBuilder"    
-$TaskName = "Build-031819"  # Do not use the real name of the task file - Example: OSBuild Build-031819.json --> Build-031819
+$TaskName = "Build-031819"  # Do not use the real name of the task file - Example: "OSBuild Build-031819.json" --> Build-031819
 
 #MDT variables
 $MDTShare = "C:\Hydration"
