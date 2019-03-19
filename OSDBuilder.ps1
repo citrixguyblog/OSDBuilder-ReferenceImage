@@ -232,14 +232,14 @@ try {
              }
 
 
-DS_WriteLog "I" "Adding MDT Peristent Drive" $LogFile
+DS_WriteLog "I" "Adding MDT Drive" $LogFile
 
 
 try {
         New-PSDrive -Name "DS001" -PSProvider "MDTProvider" –Root $MDTShare -Description "MDT Deployment Share" 
-        DS_WriteLog "S" "Created MDT Persistent Drive" $LogFile
+        DS_WriteLog "S" "Created MDT Drive" $LogFile
      }  catch {
-              DS_WriteLog "E" "An error occurred while creating the MDT Persitent Drive (error: $($error[0]))" $LogFile
+              DS_WriteLog "E" "An error occurred while creating the MDT Drive (error: $($error[0]))" $LogFile
               Exit 1
              }
 
@@ -260,9 +260,9 @@ try {
 
 try {
         Remove-PSDrive -Name "DS001"
-        DS_WriteLog "S" "Removed the MDT Persistent Drive" $LogFile
+        DS_WriteLog "S" "Removed the MDT Drive" $LogFile
      }  catch {
-              DS_WriteLog "E" "An error occurred while removing the MDT Persistent Drive (error: $($error[0]))" $LogFile
+              DS_WriteLog "E" "An error occurred while removing the MDT Drive (error: $($error[0]))" $LogFile
               Exit 1
              }
 
