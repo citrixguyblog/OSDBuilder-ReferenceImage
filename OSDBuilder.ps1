@@ -142,7 +142,7 @@ try {
   try {
          DS_WriteLog "I" "Update is available.Update in progress...." $LogFile
          OSDBuilder -Update
-         DS_WriteLog "S" "OSDbuilder Update completed succesfully to Version: $($NewBuild.Version)" $LogFile
+         DS_WriteLog "S" "OSDBuilder Update completed succesfully to Version: $($NewBuild.Version)" $LogFile
        
      } catch {
               DS_WriteLog "E" "An error occurred while updating the OSDBuilder Module (error: $($error[0]))" $LogFile
